@@ -1,0 +1,100 @@
+/* palette: forest #1e4838 · cream #f5edd8 · sage #7cb278 / #b0d6a0 · terracotta #c8794a */
+
+/* not made of natural materials, or unreadable: gone */
+.sff-hidden { display: none !important; }
+/* the same, but the tile keeps its space (for shops whose list moves when a tile disappears) */
+.sff-ghost { visibility: hidden !important; }
+
+/* still being checked: keep the space but show nothing, so the page doesn't flash */
+.sff-pending { visibility: hidden !important; }
+
+/* sustainable: fades in */
+/* isolation: our label may sit above the tile's own picture, but never above the shop's own panels
+   (filters, menus, pop-ups) that open over the page: its stacking order stays inside this tile */
+.sff-ok { animation: sff-in 0.35s ease-out; isolation: isolate; }
+@keyframes sff-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- the label on a product tile ---------- */
+.sff-badge {
+  position: absolute; top: 8px; left: 8px; z-index: 100; max-width: 92%;   /* high, but only inside its own (isolated) tile */
+  background: rgba(30, 72, 56, 0.96); color: #f5edd8; font: 600 13px/1.3 Arial, sans-serif;
+  padding: 5px 10px 6px; border-radius: 12px; cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.sff-badge:hover { background: rgba(21, 52, 39, 0.98); }
+.sff-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+
+/* certification chips: colour = what it is about */
+.sff-chip {
+  display: inline-block; padding: 2px 8px; border-radius: 9px; font: 700 11.5px/1.5 Arial, sans-serif;
+  letter-spacing: .02em; color: #fff; background: #777; white-space: nowrap;
+}
+.sff-t-welfare    { background: #c8794a; }
+.sff-t-production { background: #7cb278; color: #12301f; }
+.sff-t-footprint  { background: #4f9d9a; }
+.sff-t-recycled   { background: #4a8fb8; }
+.sff-t-chemicals  { background: #8b8fbf; }
+.sff-t-social     { background: #d4a73f; color: #3a2b00; }
+.sff-t-vegan      { background: #7cb278; color: #12301f; }
+.sff-chip.sff-more { background: rgba(245, 237, 216, .25); color: #f5edd8; }
+
+/* ---------- the card ---------- */
+#sff-card {
+  position: fixed; z-index: 2147483647; width: 340px; max-width: calc(100vw - 16px); max-height: 75vh; overflow: auto;
+  background: #f5edd8; color: #1e4838; border-radius: 16px; padding: 14px 16px 12px;
+  font: 15px/1.45 "Trebuchet MS", "Segoe UI", Arial, sans-serif; text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .35); animation: sff-in .2s ease-out;
+}
+#sff-card * { box-sizing: border-box; }
+#sff-card .sff-card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 17px; }
+#sff-card .sff-card-x { all: unset; cursor: pointer; font-size: 26px; line-height: 1; padding: 0 4px; color: #1e4838; }
+
+/* the checked / says lines */
+#sff-card .sff-lines { margin: 8px 0 2px; }
+#sff-card .sff-line { display: flex; align-items: flex-start; gap: 9px; padding: 6px 0; }
+#sff-card .sff-line + .sff-line { border-top: 1px solid rgba(30, 72, 56, .1); }
+#sff-card .sff-ico {
+  flex: none; width: 21px; height: 21px; margin-top: 1px; border-radius: 50%; text-align: center;
+  font: 700 14px/21px Arial, sans-serif; color: #fff;
+}
+#sff-card .sff-ico-ok   { background: #3d7a3a; }
+#sff-card .sff-ico-says { background: #d4a73f; color: #3a2b00; font-family: Georgia, serif; }
+#sff-card .sff-ico-none { background: #b9b2a0; }
+#sff-card .sff-line-text { font-size: 15px; }
+#sff-card .sff-more-count { font-size: 13px; opacity: .75; padding: 2px 0 0 30px; }
+
+/* the one tip */
+#sff-card .sff-tip { margin: 8px 0 2px; padding: 9px 11px; border-radius: 10px; background: rgba(200, 121, 74, .16); font-size: 14.5px; }
+
+#sff-card .sff-i {
+  all: unset; cursor: pointer; margin-left: 8px; width: 18px; height: 18px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+  border: 1.5px solid #1e4838; border-radius: 50%; color: #1e4838; font: italic 700 12px Georgia, serif; vertical-align: 1px;
+}
+#sff-card .sff-i:hover { background: #1e4838; color: #f5edd8; }
+#sff-card .sff-tip-more { margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(30, 72, 56, .2); }
+#sff-card .sff-tip-more p { margin: 4px 0; font-size: 14px; }
+
+/* more details */
+#sff-card .sff-more-btn {
+  all: unset; display: block; margin: 8px 0 0; padding: 4px 0; cursor: pointer; font-size: 14.5px; font-weight: 700;
+  color: #1e4838; text-decoration: underline; text-underline-offset: 3px;
+}
+#sff-card .sff-more { margin-top: 6px; padding-top: 8px; border-top: 1px solid rgba(30, 72, 56, .18); }
+#sff-card .sff-more p { margin: 6px 0; font-size: 14px; }
+#sff-card .sff-foot { margin-top: 10px; font-size: 12.5px; opacity: .7; }
+
+/* ---------- small status bubble (listing and product pages) ---------- */
+#sff-pill {
+  position: fixed; right: 16px; bottom: 16px; z-index: 900;
+  background: #1e4838; color: #f5edd8; font: 600 15px/1.2 Arial, sans-serif;
+  padding: 12px 17px; border-radius: 24px; box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+  pointer-events: none; animation: sff-in 0.3s ease-out;
+}
+#sff-pill.sff-busy::before {
+  content: ""; display: inline-block; width: 13px; height: 13px; margin-right: 9px; vertical-align: -1px;
+  border: 2px solid rgba(245, 237, 216, .35); border-top-color: #f5edd8; border-radius: 50%;
+  animation: sff-spin 0.8s linear infinite;
+}
+#sff-pill.sff-page { pointer-events: auto; cursor: pointer; max-width: 440px; }
+#sff-pill.sff-page-bad { background: #9a4b2c; cursor: default; }
+@keyframes sff-spin { to { transform: rotate(360deg); } }

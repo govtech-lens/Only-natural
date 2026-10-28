@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Only Natural",
+  "version": "1.17",
+  "description": "One button: show only clothes made from natural, non-plastic materials (wool, cashmere, lyocell, cotton, linen...).",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{e9baa090-b8be-43f1-93c7-67cfab67a8bc}",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Only Natural"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "i18n.js",
+        "lang/en.js",
+        "lang/de.js",
+        "lang/fr.js",
+        "lang/es.js",
+        "lang/it.js",
+        "lang/nl.js",
+        "lang/pt.js",
+        "lang/ko.js",
+        "lang/ja.js",
+        "lang/zh.js",
+        "knowledge.js",
+        "classify.js",
+        "clothing.js",
+        "card.js",
+        "content.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
