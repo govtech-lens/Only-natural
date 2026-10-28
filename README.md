@@ -1,2 +1,2 @@
 # Only-natural
-Sustainable fashion shopping without reading a single label. Simple and easy.
+Sustainable fashion shopping without reading a single label.
